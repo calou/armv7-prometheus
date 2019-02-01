@@ -1,10 +1,9 @@
 FROM alpine:3.8
 
 WORKDIR /root
-RUN apk add --update libarchive-tools
 
 ADD https://github.com/prometheus/prometheus/releases/download/v2.6.0/prometheus-2.6.0.linux-armv7.tar.gz /root/
-RUN bsdtar -xvf prometheus-*.tar.gz -C ./ --strip-components=1
+RUN tar -xzvf prometheus-*.tar.gz -C ./ --strip-components=1
 
 RUN mkdir -p /usr/share/prometheus
 RUN mkdir -p /etc/prometheus
